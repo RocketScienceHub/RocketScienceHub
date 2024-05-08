@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rocket Science Hub</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #ffffff;
+        }
+        .video-bg {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1;
+        }
+        header {
+            background-color: #af4c4c21;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        section {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #4caf4f00;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: hsla(122, 39%, 49%, 0);
+            color: white;
+            border: 1px solid #367c3e;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s, border-color 0.3s;
+            box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .button:hover {
+            background-color: #45a049;
+            border-color: #2e6031;
+        }
+
+       
+    </style>
+</head>
+<body>
+    <video class="video-bg" autoplay loop muted>
+        <source src="https://cdn.pixabay.com/video/2021/04/20/71654-539969393_tiny.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <header>
+        <h2>Welcome to Rocket Science Hub</h2>
+        <p>Discover the latest breakthroughs, technologies, and missions or use our Stability Calculator!</p>
+        <!-- Button with Anchor Tag -->
+        <a class="button" href="#section_id">Stability calculator</a>
+        <a class="button" href="#section_iod">Rocket articles</a>
+    </header>
+    <!-- Some Content -->
+    <div style="height: 1000px;">.</div>
+
+    <!-- Target Section -->
+    <section id="section_id">
+        <!-- Content of the target section goes here -->
+        <h1>Rocket Stability Calculator</h1>
+        <style>
+            /* CSS styles */
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #000;
+                color: #000
+            }
+            #video-bg {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                min-width: 100%;
+                min-height: 100%;
+                width: auto;
+                height: auto;
+                z-index: -100;
+                transform: translateX(-50%) translateY(-50%);
+            }
+
+            header {
+            background-color: #af4c4c21;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            }
+
+            nav {
+                background-color: #f90;
+                color: #fff;
+                padding: 10px 20px;
+                text-align: center;
+            }
+
+            nav a {
+                color: #fff;
+                text-decoration: none;
+                margin: 0 10px;
+            }
+
+            .container {
+                max-width: 800px;
+                margin: 20px auto;
+                padding: 0 20px;
+            }
+
+            .calculator-section {
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 5px;
+                margin-bottom: 20px;
+            }
+
+            .calculator-section h2 {
+                margin-top: 0;
+            }
+
+            .form-group {
+                margin-bottom: 20px;
+            }
+
+            label {
+                display: block;
+                margin-bottom: 5px;
+            }
+
+            input[type="text"], input[type="number"] {
+                width: 100%;
+                padding: 8px;
+                box-sizing: border-box;
+                border: 1px solid #ccc;
+                border-radius: 3px;
+            }
+
+            button {
+                background-color: #4CAF50;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                width: 100%;
+            }
+
+            button:hover {
+                background-color: #45a049;
+            }
+            
+            #section_id {
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+            
+
+            #result {
+                margin-top: 20px;
+                padding: 20px;
+                border-radius: 5px;
+                background-color: #f9f9f9;
+            }
+
+
+            .highlight {
+                background-color: yellow;
+                font-weight: bold;
+            }
+        </style>
+        <div class="container">
+            <div class="calculator-section">
+                <h2>Calculate Rocket Stability</h2>
+                <div class="form-group">
+                    <label for="rocketLength">Rocket Length (in meters):</label>
+                    <input type="number" id="rocketLength" required>
+                </div>
+                <div class="form-group">
+                    <label for="components">Number of Components:</label>
+                    <input type="number" id="components" required>
+                </div>
+                <div id="materialInputs">
+                    <!-- Materials and dimensions will be added dynamically -->
+                </div>
+                <button onclick="addMaterialInputs()">Add Materials</button>
+                <button onclick="calculateStability()">Calculate Stability</button>
+            </div>
+            <div id="result"></div>
+        </div>
+    </section>
+
+    <script>
+        function addMaterialInputs() {
+            var componentsCount = parseInt(document.getElementById('components').value);
+            var materialInputs = document.getElementById('materialInputs');
+
+            materialInputs.innerHTML = '';
+
+            for (var i = 1; i <= componentsCount; i++) {
+                var materialLabel = document.createElement('label');
+                materialLabel.setAttribute('for', 'material' + i);
+                materialLabel.textContent = 'Material of Component ' + i + ':';
+                materialInputs.appendChild(materialLabel);
+
+                var materialSelect = document.createElement('select');
+                materialSelect.setAttribute('id', 'material' + i);
+                materialSelect.setAttribute('required', 'true');
+                materialInputs.appendChild(materialSelect);
+
+                var materials = ["Aluminum", "Brass", "PVC", "Steel", "Carbon Fiber"];
+
+                for (var j = 0; j < materials.length; j++) {
+                    var option = document.createElement('option');
+                    option.textContent = materials[j];
+                    option.value = materials[j].toLowerCase();
+                    materialSelect.appendChild(option);
+                }
+
+                var dimensionsLabel = document.createElement('label');
+                dimensionsLabel.setAttribute('for', 'dimensions' + i);
+                dimensionsLabel.textContent = 'Dimensions of Component ' + i + ' (in meters):';
+                materialInputs.appendChild(dimensionsLabel);
+
+                var dimensionsInput = document.createElement('input');
+                dimensionsInput.setAttribute('type', 'text');
+                dimensionsInput.setAttribute('id', 'dimensions' + i);
+                dimensionsInput.setAttribute('placeholder', 'Enter dimensions (e.g., length x width x height)');
+                dimensionsInput.setAttribute('required', 'true');
+                materialInputs.appendChild(dimensionsInput);
+            }
+        }
+
+        function calculateStability() {
+            var rocketLength = parseFloat(document.getElementById('rocketLength').value);
+            var componentsCount = parseInt(document.getElementById('components').value);
+            var componentDensities = [];
+            var componentVolumes = [];
+
+            for (var i = 1; i <= componentsCount; i++) {
+                var material = document.getElementById('material' + i).value;
+                var density = getDensity(material); 
+                componentDensities.push(density);
+
+                var dimensions = document.getElementById('dimensions' + i).value;
+                var volume = calculateVolume(dimensions);
+                componentVolumes.push(volume);
+            }
+
+            var totalDensity = 0;
+            var totalVolume = 0;
+
+            for (var j = 0; j < componentsCount; j++) {
+                totalDensity += componentDensities[j];
+                totalVolume += componentVolumes[j];
+            }
+
+            var centerOfGravity = totalVolume != 0 ? (rocketLength * totalDensity) / (2 * totalVolume) : 0;
+            var centerOfPressure = rocketLength / 3; 
+
+            var stabilityMargin = centerOfPressure - centerOfGravity;
+            var stabilityMessage;
+
+            if (stabilityMargin > 0) {
+                stabilityMessage = "Stable: The rocket is stable with a stability margin of " + stabilityMargin.toFixed(2) + " meters.";
+            } else if (stabilityMargin < 0) {
+                stabilityMessage = "Unstable: The rocket is unstable with a stability margin of " + Math.abs(stabilityMargin).toFixed(2) + " meters.";
+            } else 
+                stabilityMessage = "Unstable: The rocket is unstable with a stability margin of " + Math.abs(stabilityMargin).toFixed(2) + " meters.";
+
+            stabilityMessage += "<br><br>";
+            stabilityMessage += "To calculate stability manually, you can use the formula: Stability Margin = Center of Pressure - Center of Gravity. ";
+            stabilityMessage += "The Center of Pressure (CP) depends on the rocket's shape and is generally located behind the Center of Gravity (CG) for stability. ";
+            stabilityMessage += "Determining CP requires detailed aerodynamic analysis, and it's often an iterative process during rocket design.";
+
+            document.getElementById('result').innerHTML = stabilityMessage;
+        }
+
+        function getDensity(material) {
+            switch(material) {
+                case 'aluminum':
+                    return 2700; 
+                case 'brass':
+                    return 8500; 
+                case 'pvc':
+                    return 1400; 
+                case 'steel':
+                    return 7850; 
+                case 'carbon fiber':
+                    return 1750; 
+                default:
+                    return 0;
+            }
+        }
+
+        function calculateVolume(dimensions) {
+            var parts = dimensions.split('x');
+            var volume = 1;
+
+            for (var i = 0; i < parts.length; i++) {
+                volume *= parseFloat(parts[i]);
+            }
+
+            return volume;
+        }
+
+    </script>
+    <section id="section_iod">
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rocket Science Hub - Search Articles</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #000;
+        }
+
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #f90;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+            padding-bottom: 100px; /* Add padding to the bottom */
+        }
+
+        .search-section {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center; /* Center-align content */
+        }
+
+        .search-results {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: left; /* Left-align content */
+        }
+
+        .highlight {
+            background-color: yellow;
+            font-weight: bold;
+        }
+
+        .article h3 {
+            color: #007bff; /* Blue color for article titles */
+        }       
+
+        article p {
+           line-height: 1.6; /* Increase line height for better readability */
+
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Rocket Science Hub</h1>
+        <p>Your source for reliable information</p>
+    </header>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Browse</a>
+        <a href="#">Contribute</a>
+        <a href="#">Contact</a>
+    </nav>
+    <div class="container">
+        <div class="search-section">
+            <h2>Search Articles</h2>
+            <input type="text" id="searchInput" placeholder="Search articles by topic">
+            <button onclick="searchArticles()">Search</button>
+        </div>
+        <div class="search-results">
+            <h2>Search Results</h2>
+            <div id="searchResults">
+                <!-- Search results will be displayed here -->
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Function to search articles by topic
+        function searchArticles() {
+            const searchInput = document.getElementById("searchInput").value.toLowerCase();
+            const searchResults = document.getElementById("searchResults");
+            searchResults.innerHTML = ""; // Clear previous search results
+
+            // Simulated data for articles
+            const articles = [
+                {
+                    title: "The James Webb Space Telescope (JWST): Peering into the Cosmos",
+                    topic: "James Webb Space Telescope",
+                    content: "The James Webb Space Telescope (JWST) stands as a testament to humanity's relentless pursuit of understanding the cosmos. As the most powerful space telescope ever constructed, it promises to revolutionize our comprehension of the universe, unveiling its mysteries with unprecedented clarity. Let's delve into the remarkable journey of the JWST, its groundbreaking capabilities, and the profound insights it's poised to deliver. A Visionary Endeavor The concept of the JWST emerged from the desire to surpass the capabilities of its predecessor, the Hubble Space Telescope. Proposed in the late 1990s and named in honor of James E. Webb, NASA's administrator during the Apollo era, this ambitious project represents a collaboration between NASA, the European Space Agency (ESA), and the Canadian Space Agency (CSA). Unraveling the Universe's Origins One of the primary objectives of the JWST is to explore the origins of the universe. Equipped with advanced instruments capable of peering deep into space and time, it aims to observe the earliest galaxies formed after the Big Bang, providing insights into the cosmic dawn. By analyzing the light emitted from these distant celestial objects, scientists hope to unravel the processes that shaped the cosmos during its infancy. Probing Exoplanetary Worlds Another groundbreaking aspect of the JWST's mission is its focus on exoplanets – planets orbiting stars beyond our solar system. With its infrared capabilities, the telescope can penetrate through cosmic dust clouds, offering a clearer view of exoplanetary atmospheres. By studying these atmospheres for chemical signatures indicative of life, such as water vapor and organic molecules, scientists aspire to identify potentially habitable worlds and investigate the prevalence of life in the universe. Unveiling Stellar Nurseries The JWST is poised to revolutionize our understanding of star formation by observing stellar nurseries – regions where new stars are born from clouds of gas and dust. Its high-resolution imaging capabilities will allow scientists to witness the intricate processes involved in star birth, shedding light on the factors influencing stellar evolution and the formation of planetary systems. Technological Marvels The JWST boasts several cutting-edge technologies that enable its groundbreaking observations. Its primary mirror, composed of 18 hexagonal segments, spans an impressive 6.5 meters in diameter – nearly three times larger than that of the Hubble Space Telescope. Additionally, the telescope's suite of scientific instruments, including cameras, spectrometers, and coronagraphs, offers unparalleled versatility for a wide range of astronomical investigations. Overcoming Challenges Despite its immense potential, the JWST has faced numerous challenges and setbacks throughout its development. From budget overruns to technical hurdles, the project has encountered obstacles that tested the resolve of scientists and engineers involved. However, through perseverance and innovation, they have overcome these obstacles, ensuring the telescope's readiness for its long-awaited journey into space. A New Era of Discovery As the JWST prepares to embark on its mission, anticipation among the scientific community and the general public reaches a crescendo. With its unparalleled observational capabilities, the telescope holds the promise of unlocking profound insights into the nature of the universe, from its earliest moments to the search for life beyond Earth. Its discoveries are poised to reshape our understanding of cosmic evolution and inspire future generations to explore the wonders of the cosmos. In the vast expanse of space, the James Webb Space Telescope stands as a beacon of human ingenuity and curiosity, poised to illuminate the darkest corners of the cosmos and reveal the beauty and complexity of the universe in ways never before imagined."
+                },
+                {
+                    title: "Falcon 9 rocket Launch: The latest updates",
+                    topic: "Falcon 9 Rocket",
+                    content: "Rockets from the Falcon 9 family have been launched 339 times, with 337 full mission successes, two failures,  and one partial success. Designed and operated by SpaceX, the Falcon 9 family includes the retired versions Falcon 9 v1.0, v1.1, and v1.2 \"Full Thrust\" (blocks 3 and 4), along with the currently active Block 5 evolution. Falcon Heavy is a heavy-lift derivative of Falcon 9, combining a strengthened central core with two Falcon 9 first stages as side boosters. The Falcon design features reusable first-stage boosters, which land either on a ground pad near the launch site or on a drone ship at sea. In December 2015, Falcon 9 became the first rocket to land propulsively after delivering a payload into orbit. This reusability results in significantly reduced launch costs, as the cost of the first stage constitutes the majority of the cost of a new rocket. Falcon family boosters have successfully landed 303 times in 314 attempts. A total of 42 boosters have flown multiple missions, with a record of 20 missions by a booster. SpaceX has also reflown fairing halves more than 300 times, with some being reflown for eleven or more times."
+                },
+                {
+                    title: "Artemis: Returning to the moon",
+                    topic: "Artemis mission",
+                    content: " Artemis is NASA's program to return humans to the Moon, aiming to land the first woman and the next man on the lunar surface by the mid-2020s. It builds on the legacy of the Apollo program and aims to establish sustainable human presence on the Moon. Unlike the Apollo missions, which were primarily focused on short-term exploration, Artemis aims to establish a sustainable presence on the Moon. This involves developing infrastructure, such as habitats and power systems, to support long-duration crewed missions. The Artemis program consists of a series of missions leading up to the crewed lunar landing. These missions include Artemis I, an uncrewed test flight of the Space Launch System (SLS) and the Orion spacecraft; Artemis II, a crewed test flight around the Moon; and Artemis III, the crewed lunar landing mission. NASA is working with international partners, including the European Space Agency (ESA), the Canadian Space Agency (CSA), and others, to achieve the goals of the Artemis program. This collaboration enhances the program's capabilities and fosters cooperation in space exploration.  A key component of the Artemis program is the Lunar Gateway, a small space station that will orbit the Moon and serve as a staging point for lunar missions. The Gateway will provide a platform for scientific research, technology demonstrations, and as a waypoint for crewed missions traveling to and from the lunar surface."
+                },
+                {
+                    title: "Apollo eleven",
+                    topic: "Apollo mission",
+                    content: "Apollo 11 was the spaceflight that first landed humans on the Moon. Commander Neil Armstrong and lunar module pilot Buzz Aldrin formed the American crew that landed the Apollo Lunar Module Eagle on July 20, 1969, at 20:17 UTC. Armstrong became the first person to step onto the lunar surface six hours and 39 minutes later on July 21 at 02:56 UTC; Aldrin joined him 19 minutes later. They spent about two and a quarter hours together outside the spacecraft, and they collected 47.5 pounds (21.5 kg) of lunar material to bring back to Earth. Command module pilot Michael Collins flew the Command Module Columbia alone in lunar orbit while they were on the Moon's surface. Armstrong and Aldrin spent 21.5 hours on the lunar surface before rejoining Columbia in lunar orbit."
+                },
+                {
+                    title: "The Mars Perseverance Rover: Exploring the Red Planet",
+                    topic: "Perseverance Rover",
+                    content: "The Mars Perseverance Rover represents the latest chapter in humanity's quest to explore the Red Planet. Launched by NASA in July 2020, Perseverance is a robotic rover equipped with state-of-the-art instruments and technology designed to search for signs of past microbial life, collect samples for future return to Earth, and pave the way for human exploration of Mars. The rover's mission is to explore Jezero Crater, a location believed to have once contained a lake and river delta billions of years ago. By studying the geological and chemical composition of the Martian surface, Perseverance aims to unravel the planet's history and potential for habitability. Equipped with a suite of scientific instruments, including cameras, spectrometers, and a drill for sample collection, the rover is poised to make groundbreaking discoveries that will reshape our understanding of Mars and its potential for life."
+                },
+                {
+                    title: "SpaceX Starship: The Future of Interplanetary Travel",
+                    topic: "SpaceX Starship",
+                    content: "SpaceX Starship is a fully reusable spacecraft designed for missions to Earth orbit, the Moon, Mars, and beyond. Developed by SpaceX, the Starship system consists of two stages: the Super Heavy booster and the Starship spacecraft. With its massive size and capacity, Starship is poised to revolutionize space travel by dramatically reducing the cost of accessing space and enabling ambitious missions to destinations throughout the solar system. The spacecraft features advanced technologies, such as methane-powered engines, thermal protection systems, and autonomous landing capabilities, making it capable of carrying humans and cargo on long-duration missions to other planets. SpaceX envisions Starship as the key to establishing a sustainable human presence on Mars and unlocking the potential for interplanetary exploration and colonization."
+                },
+                {
+                    title: "The Hubble Space Telescope: Unveiling the Mysteries of the Cosmos",
+                    topic: "Hubble Space Telescope",
+                    content: "The Hubble Space Telescope has been a beacon of discovery since its launch in 1990. Orbiting high above Earth's atmosphere, Hubble has provided astronomers with unprecedented views of the universe, capturing stunning images of distant galaxies, nebulae, and other celestial phenomena. Over the past three decades, Hubble has revolutionized our understanding of the cosmos, revealing new insights into the nature of dark matter, dark energy, and the origins of stars and galaxies. Equipped with a suite of powerful instruments, including cameras, spectrographs, and detectors, Hubble continues to push the boundaries of scientific knowledge, paving the way for future generations of space telescopes and observatories."
+                },
+                {
+                    title: "The International Space Station: A Symbol of Global Cooperation",
+                    topic: "International Space Station",
+                    content: "The International Space Station (ISS) stands as a testament to the power of international cooperation and collaboration in space exploration. Since its first module was launched in 1998, the ISS has served as a microgravity laboratory and research facility, hosting scientific experiments from countries around the world. Crewed by astronauts from various space agencies, including NASA, Roscosmos, ESA, JAXA, and CSA, the ISS serves as a platform for studying human health, conducting experiments in physics, biology, and materials science, and testing technologies for future space exploration. The station's modular design allows for continuous upgrades and expansion, ensuring its relevance for years to come as humanity's outpost in low Earth orbit."
+                },
+                {
+                    title: "Voyager Spacecraft: Interstellar Explorers",
+                    topic: "Voyager Spacecraft",
+                    content: "The Voyager spacecraft are two robotic probes launched by NASA in 1977 on a mission to explore the outer planets of the solar system. Voyager 1 and Voyager 2 have surpassed all expectations, sending back valuable data and images of Jupiter, Saturn, Uranus, and Neptune, as well as their moons and rings. After completing their primary mission objectives, both spacecraft continue to journey through interstellar space, carrying golden records containing sounds and images representing Earth's culture and civilization. Voyager 1 became the first human-made object to enter interstellar space in 2012, followed by Voyager 2 in 2018. These pioneering spacecraft have provided humanity with a new perspective on our place in the cosmos and will continue to explore the depths of space for millions of years to come."
+                },
+                {
+                    title: "The Curiosity Rover: Exploring Gale Crater on Mars",
+                    topic: "Curiosity Rover",
+                    content: "The Curiosity Rover, also known as the Mars Science Laboratory, has been exploring the surface of Mars since its landing in Gale Crater in August 2012. Equipped with a suite of scientific instruments, including cameras, spectrometers, and a drill for sample collection, Curiosity's mission is to assess the past and present habitability of Mars. The rover has made numerous discoveries, including evidence of ancient lakes, rivers, and groundwater beneath the Martian surface. By studying the geology and chemistry of Gale Crater, Curiosity is helping scientists better understand the planet's history and potential for life. Despite facing challenges such as harsh terrain and dust storms, Curiosity continues to operate successfully, paving the way for future Mars exploration missions."
+                }
+            ];
+
+            // Search for articles matching the topic
+            const matchingArticles = articles.filter(article => article.topic.toLowerCase().includes(searchInput));
+
+            // Display search results
+            if (matchingArticles.length > 0) {
+                matchingArticles.forEach(article => {
+                    const articleElement = document.createElement("div");
+                    articleElement.innerHTML = `<h3>${article.title}</h3><p>${article.content}</p>;`
+                    searchResults.appendChild(articleElement);
+                });
+            } else {
+                searchResults.innerHTML = "<p>No articles found matching the search criteria.</p>";
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+
+    </section>
+</body>
+</html>
